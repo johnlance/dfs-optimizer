@@ -28,7 +28,10 @@ jobs:
       - name: Build React application
         run: cd frontend && npm run build
 
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: frontend/docs
+
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
-        with:
-          folder: frontend/docs # The directory containing your static files
