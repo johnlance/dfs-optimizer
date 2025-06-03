@@ -6,9 +6,8 @@ on:
       - main # Or your main branch
 
 permissions:
-  id-token: write
+  contents: write
   pages: write
-  contents: read
 
 jobs:
   deploy:
@@ -28,10 +27,10 @@ jobs:
       - name: Build React application
         run: cd frontend && npm run build
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: frontend/docs
-
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+        uses: JamesIves/github-pages-deploy-action@4.1.7
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action will deploy to.
+          FOLDER: frontend/docs # The folder where your static files are located.
+          CLEAN: true # Automatically remove deleted files from the deploy branch
