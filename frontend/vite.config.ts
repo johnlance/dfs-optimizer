@@ -8,7 +8,7 @@ export default defineConfig({
     outDir: 'docs',
     rollupOptions: {
       input: {
-        main: 'src/main.tsx', // Or your main entry point
+        main: 'src/main.tsx', // Or your main entry point 
       },
     },
   },
